@@ -7,10 +7,18 @@ class ChallengeEngine {
         userLatitude: Double,
         userLongitude: Double,
         places: List<Place>,
-        history: List<Challenge>
+        history: List<Challenge>,
+        recentSuggestedPlaceNames: Set<String> = emptySet(),
+        preferredCategory: String? = null
     ): Challenge? {
         if (places.isEmpty()) return null
 
+        val freshPlaces = places.filter { it.name.lowercase() !in recentSuggestedPlaceNames }
+        val candidatePlaces = if (freshPlaces.size >= MIN_FRESH_PLACES_TO_AVOID_REPEATS) {
+            freshPlaces
+        } else {
+            places
+        }
         val completed = history.filter { it.status == Challenge.STATUS_COMPLETED }
         val recentlyCompletedNames = completed.take(5).map { it.targetPlaceName.lowercase() }.toSet()
         val completedCategories = completed.map { it.category }.toSet()
@@ -23,7 +31,7 @@ class ChallengeEngine {
             else -> 900
         }
 
-        val scoredPlaces = places.map { place ->
+        val scoredPlaces = candidatePlaces.map { place ->
             val reasons = mutableListOf<String>()
             var score = 0
 
@@ -41,6 +49,14 @@ class ChallengeEngine {
             } else {
                 score -= 50
                 reasons.add("recently completed places are avoided")
+            }
+
+            if (place.name.lowercase() !in recentSuggestedPlaceNames) {
+                score += 22
+                reasons.add("not suggested in the last few refreshes")
+            } else {
+                score -= 80
+                reasons.add("recently suggested places are avoided")
             }
 
             if (place.category !in completedCategories) {
@@ -62,6 +78,11 @@ class ChallengeEngine {
             if (place.category in preferredTimeCategories) {
                 score += 16
                 reasons.add("category matches the current time of day")
+            }
+
+            if (preferredCategory != null && place.category == preferredCategory) {
+                score += 120
+                reasons.add("matches your selected category preference")
             }
 
             if (place.distanceMeters <= 500) {
@@ -90,6 +111,10 @@ class ChallengeEngine {
             in 15..18 -> setOf("Nature / Sport", "History", "Culture")
             else -> setOf("Culture", "History", "Local discovery")
         }
+    }
+
+    companion object {
+        private const val MIN_FRESH_PLACES_TO_AVOID_REPEATS = 3
     }
 
     private data class ScoredPlace(

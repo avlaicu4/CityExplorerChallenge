@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/app_background"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="22dp">
+
+    <ImageView
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="Excited City Explorer mascot"
+        android:scaleType="fitCenter"
+        android:src="@drawable/mascot_border_collie" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:gravity="center"
+        android:text="Don't like?"
+        android:textColor="@color/app_text"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:lineSpacingExtra="3dp"
+        android:text="You choose"
+        android:textColor="@color/app_muted_text"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnCategoryNature"
+        android:layout_width="210dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/btn_green"
+        android:backgroundTint="@null"
+        android:text="Nature / Sport"
+        android:textAllCaps="false"
+        android:textColor="@color/app_text"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnCategoryCulture"
+        android:layout_width="210dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_orange"
+        android:backgroundTint="@null"
+        android:text="Culture"
+        android:textAllCaps="false"
+        android:textColor="@color/app_text"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnCategoryFood"
+        android:layout_width="210dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_pink_outline"
+        android:backgroundTint="@null"
+        android:text="Food"
+        android:textAllCaps="false"
+        android:textColor="@color/app_text"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnCategoryHistory"
+        android:layout_width="210dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_pink_outline"
+        android:backgroundTint="@null"
+        android:text="History"
+        android:textAllCaps="false"
+        android:textColor="@color/app_text"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnCategorySurprise"
+        android:layout_width="210dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_pink_outline"
+        android:backgroundTint="@null"
+        android:text="Surprise me"
+        android:textAllCaps="false"
+        android:textColor="@color/app_text"
+        android:textStyle="bold" />
+</LinearLayout>

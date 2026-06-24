@@ -7,8 +7,14 @@ class ChallengeStorage(context: Context) {
     private val prefs = context.getSharedPreferences("CityExplorerPrefs", Context.MODE_PRIVATE)
 
     fun saveActiveChallenge(challenge: Challenge) {
+        val recentNames = getRecentSuggestedPlaceNames()
+            .filterNot { it.equals(challenge.targetPlaceName, ignoreCase = true) }
+            .toMutableList()
+        recentNames.add(0, challenge.targetPlaceName)
+
         prefs.edit()
             .putString(KEY_ACTIVE_CHALLENGE, challenge.toJson().toString())
+            .putString(KEY_RECENT_SUGGESTIONS, JSONArray(recentNames.take(MAX_RECENT_SUGGESTIONS)).toString())
             .apply()
     }
 
@@ -26,6 +32,7 @@ class ChallengeStorage(context: Context) {
         prefs.edit()
             .putString(KEY_ACTIVE_CHALLENGE, completed.toJson().toString())
             .putString(KEY_HISTORY, JSONArray(history.map { it.toJson() }).toString())
+            .putInt(KEY_CONSECUTIVE_SKIPS, 0)
             .apply()
         return completed
     }
@@ -59,6 +66,31 @@ class ChallengeStorage(context: Context) {
         }
     }
 
+    fun getRecentSuggestedPlaceNames(): Set<String> {
+        val raw = prefs.getString(KEY_RECENT_SUGGESTIONS, "[]") ?: "[]"
+        val array = runCatching { JSONArray(raw) }.getOrDefault(JSONArray())
+        return buildSet {
+            for (i in 0 until array.length()) {
+                val name = array.optString(i).takeIf { it.isNotBlank() } ?: continue
+                add(name.lowercase())
+            }
+        }
+    }
+
+    fun recordChallengeSkipped(): Int {
+        val nextCount = prefs.getInt(KEY_CONSECUTIVE_SKIPS, 0) + 1
+        prefs.edit()
+            .putInt(KEY_CONSECUTIVE_SKIPS, nextCount)
+            .apply()
+        return nextCount
+    }
+
+    fun resetChallengeSkips() {
+        prefs.edit()
+            .putInt(KEY_CONSECUTIVE_SKIPS, 0)
+            .apply()
+    }
+
     fun completedTodayCount(): Int {
         val today = java.text.SimpleDateFormat("yyyyMMdd", java.util.Locale.getDefault())
         val currentDay = today.format(java.util.Date())
@@ -83,6 +115,9 @@ class ChallengeStorage(context: Context) {
     companion object {
         private const val KEY_ACTIVE_CHALLENGE = "ACTIVE_CHALLENGE"
         private const val KEY_HISTORY = "CHALLENGE_HISTORY"
+        private const val KEY_RECENT_SUGGESTIONS = "RECENT_SUGGESTIONS"
+        private const val KEY_CONSECUTIVE_SKIPS = "CONSECUTIVE_SKIPS"
+        private const val MAX_RECENT_SUGGESTIONS = 6
         private const val CHALLENGE_EXPIRATION_MILLIS = 24L * 60L * 60L * 1000L
     }
 }
