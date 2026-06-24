@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/app_background"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <ImageView
+        android:layout_width="190dp"
+        android:layout_height="190dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="City Explorer mascot celebrating"
+        android:scaleType="fitCenter"
+        android:src="@drawable/mascot_border_collie" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:gravity="center"
+        android:text="Great job!"
+        android:textColor="@color/app_text"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvCompletedMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:lineSpacingExtra="3dp"
+        android:text="Challenge completed."
+        android:textColor="@color/app_muted_text"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btnContinueHome"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/btn_green"
+        android:backgroundTint="@null"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:textColor="@color/app_text"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+</LinearLayout>

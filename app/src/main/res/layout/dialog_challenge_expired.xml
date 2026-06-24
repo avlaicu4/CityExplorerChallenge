@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/app_background"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <ImageView
+        android:layout_width="190dp"
+        android:layout_height="190dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="Sad City Explorer mascot"
+        android:scaleType="fitCenter"
+        android:src="@drawable/mascot_border_collie_sad" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:gravity="center"
+        android:text="Challenge expired"
+        android:textColor="@color/app_text"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvExpiredMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:lineSpacingExtra="3dp"
+        android:text="This challenge expired. Let's find a fresh one nearby."
+        android:textColor="@color/app_muted_text"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btnExpiredNewChallenge"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/btn_orange"
+        android:backgroundTint="@null"
+        android:text="Find a new challenge"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+</LinearLayout>
