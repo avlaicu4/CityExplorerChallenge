@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Statistics"
+        android:textColor="@color/app_text"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:id="@+id/tvStatsTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total completed challenges: 14\nTotal explored distance: 8.4 km"
+        android:textColor="@color/app_text"
+        android:textSize="16sp"
+        android:layout_marginBottom="24dp"
+        android:lineSpacingExtra="4dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Categories visited:"
+        android:textColor="@color/app_green_dark"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/tvStatsCategories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="• Nature: 5\n• Culture: 4\n• Food: 3\n• Sport: 2"
+        android:textColor="@color/app_text"
+        android:layout_marginBottom="24dp"
+        android:lineSpacingExtra="4dp"/>
+
+    <TextView
+        android:id="@+id/tvStatsFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Most explored category: Nature"
+        android:textColor="@color/app_orange"
+        android:textStyle="italic"
+        android:textSize="16sp"/>
+
+</LinearLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Challenge Details"
+        android:textColor="@color/app_text"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/tvDetailsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Challenge: Visit a park within 500 m"
+        android:textColor="@color/app_orange"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reason:"
+        android:textColor="@color/app_green_dark"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/tvDetailsReason"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="• nearby park detected\n• distance below 500 m\n• category not visited today"
+        android:textColor="@color/app_text"
+        android:layout_marginBottom="24dp"
+        android:lineSpacingExtra="4dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Place details:"
+        android:textColor="@color/app_green_dark"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/tvDetailsPlaceInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name: Planty Park\nCategory: Park\nDistance: 430 m"
+        android:textColor="@color/app_text"
+        android:lineSpacingExtra="4dp" />
+
+    <Button
+        android:id="@+id/btnBackToHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/btn_orange"
+        android:backgroundTint="@null"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:text="Back to Home" />
+
+</LinearLayout>

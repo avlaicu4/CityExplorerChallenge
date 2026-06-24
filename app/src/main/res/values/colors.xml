@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="app_background">#FFF0F6</color>
+    <color name="app_surface">#FFFFFF</color>
+    <color name="app_text">#171717</color>
+    <color name="app_muted_text">#5F5A66</color>
+    <color name="app_pink">#FFB3CF</color>
+    <color name="app_green">#8BCB77</color>
+    <color name="app_green_dark">#2E7D32</color>
+    <color name="app_orange">#FF8A3D</color>
+    <color name="app_yellow">#FFE680</color>
 </resources>
